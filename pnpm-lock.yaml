@@ -17,6 +17,9 @@ importers:
       '@antfu/utils':
         specifier: ^0.7.7
         version: 0.7.7
+      '@kehwar/eslint-config':
+        specifier: workspace:*
+        version: link:packages/eslint-config
       '@types/node':
         specifier: ^20.10.5
         version: 20.10.5
@@ -44,6 +47,45 @@ importers:
       simple-git-hooks:
         specifier: ^2.9.0
         version: 2.9.0
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      unbuild:
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.3.3)
+      vite:
+        specifier: ^5.0.10
+        version: 5.0.10(@types/node@20.10.5)
+      vitest:
+        specifier: ^1.1.0
+        version: 1.1.0(@types/node@20.10.5)(@vitest/ui@1.1.2)
+
+  packages/eslint-config:
+    devDependencies:
+      '@antfu/eslint-config':
+        specifier: ^2.6.0
+        version: 2.6.0(@vue/compiler-sfc@3.3.10)(eslint@8.56.0)(typescript@5.3.3)(vitest@1.1.0)
+      '@antfu/ni':
+        specifier: ^0.21.12
+        version: 0.21.12
+      '@antfu/utils':
+        specifier: ^0.7.7
+        version: 0.7.7
+      '@types/node':
+        specifier: ^20.10.5
+        version: 20.10.5
+      eslint:
+        specifier: ^8.56.0
+        version: 8.56.0
+      esno:
+        specifier: ^4.0.0
+        version: 4.0.0
+      pnpm:
+        specifier: ^8.12.1
+        version: 8.12.1
+      rimraf:
+        specifier: ^5.0.5
+        version: 5.0.5
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1850,12 +1892,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /citty@0.1.3:
-    resolution: {integrity: sha512-tb6zTEb2BDSrzFedqFYFUKUuKNaxVJWCm7o02K4kADGkBDyyiz7D40rDMpguczdZyAN3aetd5fhpB01HkreNyg==}
-    dependencies:
-      consola: 3.2.3
-    dev: true
-
   /citty@0.1.5:
     resolution: {integrity: sha512-AS7n5NSc0OQVMV9v6wt3ByujNIrne0/cTjiC2MYqhvao57VNfiuVksTSr2p17nVOhEr2KtqiAkGwHcgMC/qUuQ==}
     dependencies:
@@ -2533,7 +2569,7 @@ packages:
       file-entry-cache: 6.0.1
       find-up: 5.0.0
       glob-parent: 6.0.2
-      globals: 13.23.0
+      globals: 13.24.0
       graphemer: 1.4.0
       ignore: 5.2.4
       imurmurhash: 0.1.4
@@ -2699,17 +2735,13 @@ packages:
     resolution: {integrity: sha512-dm9s5Pw7Jc0GvMYbshN6zchCA9RgQlzzEZX3vylR9IqFfS8XciblUXOKfW6SiuJ0e13eDYZoZV5wdrev7P3Nwg==}
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
-      flatted: 3.2.6
+      flatted: 3.2.9
       rimraf: 3.0.2
     dev: true
 
   /flat@5.0.2:
     resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
     hasBin: true
-    dev: true
-
-  /flatted@3.2.6:
-    resolution: {integrity: sha512-0sQoMh9s0BYsm+12Huy/rkKxVu4R1+r96YX5cG44rHV0pQ6iC3Q+mkoMFaGWObMFYQxCVT+ssG1ksneA2MI9KQ==}
     dev: true
 
   /flatted@3.2.9:
@@ -3409,12 +3441,12 @@ packages:
       typescript:
         optional: true
     dependencies:
-      citty: 0.1.3
-      defu: 6.1.2
+      citty: 0.1.5
+      defu: 6.1.3
       esbuild: 0.18.20
       fs-extra: 11.1.1
       globby: 13.2.2
-      jiti: 1.19.3
+      jiti: 1.21.0
       mlly: 1.4.2
       mri: 1.2.0
       pathe: 1.1.1
@@ -4282,13 +4314,13 @@ packages:
       '@rollup/plugin-replace': 5.0.2(rollup@3.28.1)
       '@rollup/pluginutils': 5.0.4(rollup@3.28.1)
       chalk: 5.3.0
-      citty: 0.1.3
+      citty: 0.1.5
       consola: 3.2.3
-      defu: 6.1.2
+      defu: 6.1.3
       esbuild: 0.19.5
       globby: 13.2.2
       hookable: 5.5.3
-      jiti: 1.19.3
+      jiti: 1.21.0
       magic-string: 0.30.5
       mkdist: 1.3.0(typescript@5.3.3)
       mlly: 1.4.2
