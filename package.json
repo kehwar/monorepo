@@ -33,7 +33,6 @@
         }
     },
     "files": [
-        "./packages/eslint-config/**",
         "dist"
     ],
     "scripts": {
