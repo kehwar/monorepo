@@ -1,16 +1,16 @@
 import antfu from '@antfu/eslint-config'
-import type { FlatConfigItem, StylisticConfig } from '@antfu/eslint-config'
+import type { FlatConfigItem, OptionsConfig } from '@antfu/eslint-config'
+import _ from 'lodash'
 
-const stylisticConfig: StylisticConfig = { indent: 4, quotes: 'single' }
+const defaultConfig: OptionsConfig = { stylistic: { indent: 4, quotes: 'single' } }
 
-export function eslintConfig(...config: FlatConfigItem[]) {
+export function eslintConfig(options: OptionsConfig = {}, ...custom: FlatConfigItem[]) {
     return antfu(
-        {
-            stylistic: stylisticConfig,
-        },
+        // Defaults
+        _.defaultsDeep(options, defaultConfig),
         yamlConfig(),
         // Custom
-        ...config,
+        ...custom,
     )
 }
 

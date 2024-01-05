@@ -35,11 +35,13 @@
         "eslint": "^8.53.0"
     },
     "dependencies": {
-        "@antfu/eslint-config": "2.6.1"
+        "@antfu/eslint-config": "2.6.1",
+        "lodash": "^4.17.21"
     },
     "devDependencies": {
         "@antfu/ni": "^0.21.12",
         "@antfu/utils": "^0.7.7",
+        "@types/lodash": "^4.14.202",
         "@types/node": "^20.10.6",
         "eslint": "^8.56.0",
         "esno": "^4.0.0",
