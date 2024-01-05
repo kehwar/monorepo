@@ -33,6 +33,7 @@
         }
     },
     "files": [
+        "./packages/eslint-config/**",
         "dist"
     ],
     "scripts": {
@@ -48,7 +49,7 @@
         "prepare": "simple-git-hooks"
     },
     "dependencies": {
-        "@kehwar/eslint-config": "workspace:*"
+        "@kehwar/eslint-config": "file:./packages/eslint-config"
     },
     "devDependencies": {
         "@antfu/ni": "^0.21.12",
