@@ -126,7 +126,7 @@ importers:
     dependencies:
       '@kehwar/toolbox':
         specifier: ^0.0.2
-        version: link:../..
+        version: 0.0.2
     devDependencies:
       '@antfu/ni':
         specifier: ^0.21.12
@@ -1042,6 +1042,12 @@ packages:
       string-argv: 0.3.2
       type-detect: 4.0.8
     dev: true
+
+  /@kehwar/toolbox@0.0.2:
+    resolution: {integrity: sha512-hAyUncP7zFGDPHeUX/VIH9MeSZiJrM0ybIXYio/G589HSA/ZdDhx5ichniWk8XVmhc9QmZBjUECyG1TrNPuBpg==}
+    dependencies:
+      '@kehwar/eslint-config': link:packages/eslint-config
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
