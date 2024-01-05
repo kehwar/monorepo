@@ -1,6 +1,7 @@
 {
     "name": "@kehwar/playground",
     "type": "module",
+    "version": "0.0.10",
     "private": "true",
     "sideEffects": false,
     "exports": {
