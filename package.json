@@ -1,77 +1,77 @@
 {
-  "name": "@kehwar/toolbox",
-  "type": "module",
-  "version": "0.0.2",
-  "packageManager": "pnpm@8.12.1",
-  "description": "Collection of personal config and utilities",
-  "author": "Kehwar <erickkwr@gmail.com>",
-  "license": "MIT",
-  "homepage": "https://github.com/kehwar/toolbox#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kehwar/toolbox.git"
-  },
-  "bugs": "https://github.com/kehwar/toolbox/issues",
-  "keywords": [],
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+    "name": "@kehwar/toolbox",
+    "type": "module",
+    "version": "0.0.2",
+    "packageManager": "pnpm@8.12.1",
+    "description": "Collection of personal config and utilities",
+    "author": "Kehwar <erickkwr@gmail.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/kehwar/toolbox#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kehwar/toolbox.git"
+    },
+    "bugs": "https://github.com/kehwar/toolbox/issues",
+    "keywords": [],
+    "sideEffects": false,
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "main": "./dist/index.mjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./dist/*",
+                "./dist/index.d.ts"
+            ]
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "nr -r build && unbuild",
+        "dev": "unbuild --stub",
+        "lint": "eslint .",
+        "lint:config": "eslint-flat-config-viewer",
+        "prepublishOnly": "nr build",
+        "release": "bumpp && npm publish",
+        "start": "esno src/index.ts",
+        "test": "vitest --test-timeout=300000 --ui --silent",
+        "typecheck": "tsc --noEmit",
+        "prepare": "simple-git-hooks"
+    },
+    "dependencies": {
+        "@kehwar/eslint-config": "workspace:*"
+    },
+    "devDependencies": {
+        "@antfu/ni": "^0.21.12",
+        "@antfu/utils": "^0.7.7",
+        "@types/node": "^20.10.5",
+        "@vitest/ui": "^1.1.2",
+        "bumpp": "^9.2.1",
+        "eslint": "^8.56.0",
+        "eslint-flat-config-viewer": "^0.1.4",
+        "esno": "^4.0.0",
+        "lint-staged": "^15.2.0",
+        "pnpm": "^8.12.1",
+        "rimraf": "^5.0.5",
+        "simple-git-hooks": "^2.9.0",
+        "typescript": "^5.3.3",
+        "unbuild": "^2.0.0",
+        "vite": "^5.0.10",
+        "vitest": "^1.1.0"
+    },
+    "simple-git-hooks": {
+        "pre-commit": "pnpm lint-staged"
+    },
+    "lint-staged": {
+        "*": "eslint --fix"
     }
-  },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "nr -r build && unbuild",
-    "dev": "unbuild --stub",
-    "lint": "eslint .",
-    "lint:config": "eslint-flat-config-viewer",
-    "prepublishOnly": "nr build",
-    "release": "bumpp && npm publish",
-    "start": "esno src/index.ts",
-    "test": "vitest --test-timeout=300000 --ui --silent",
-    "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks"
-  },
-  "dependencies": {
-    "@kehwar/eslint-config": "workspace:*"
-  },
-  "devDependencies": {
-    "@antfu/ni": "^0.21.12",
-    "@antfu/utils": "^0.7.7",
-    "@types/node": "^20.10.5",
-    "@vitest/ui": "^1.1.2",
-    "bumpp": "^9.2.1",
-    "eslint": "^8.56.0",
-    "eslint-flat-config-viewer": "^0.1.4",
-    "esno": "^4.0.0",
-    "lint-staged": "^15.2.0",
-    "pnpm": "^8.12.1",
-    "rimraf": "^5.0.5",
-    "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.3",
-    "unbuild": "^2.0.0",
-    "vite": "^5.0.10",
-    "vitest": "^1.1.0"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
-  }
 }
