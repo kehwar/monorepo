@@ -36,25 +36,28 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
+    "build": "nr -r build && unbuild",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "prepublishOnly": "nr -r build",
+    "lint:config": "eslint-flat-config-viewer",
+    "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest --test-timeout=300000 --ui --silent",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
+  "dependencies": {
+    "@kehwar/eslint-config": "workspace:*"
+  },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.0",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
-    "@kehwar/eslint-config": "workspace:*",
     "@types/node": "^20.10.5",
     "@vitest/ui": "^1.1.2",
     "bumpp": "^9.2.1",
     "eslint": "^8.56.0",
+    "eslint-flat-config-viewer": "^0.1.4",
     "esno": "^4.0.0",
     "lint-staged": "^15.2.0",
     "pnpm": "^8.12.1",
