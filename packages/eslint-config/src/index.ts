@@ -11,18 +11,23 @@ export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigI
         _.defaultsDeep(options, defaultConfig),
         _eslintConfig(),
         _stylisticConfig(options),
+        _testConfig(),
+        _typescriptConfig(),
+        _unicornConfig(),
         _yamlConfig(),
 
         // Custom
         ...custom,
     )
 }
+export function eslintVueConfig(options: OptionsConfig = {}, ...custom: UserConfigItem[]) {
+    return eslintConfig(options, _vueConfig(), ...custom)
+}
 
 function _eslintConfig() {
     return {
         files: ['**/*.js', '**/*.ts', '**/*.tsx', '**/*.vue'],
         rules: {
-            // Eslint
             'camelcase': [
                 'error',
                 {
@@ -124,6 +129,92 @@ function _yamlConfig() {
         files: ['**/*.y?(a)ml'],
         rules: {
             'yaml/indent': ['error', 2],
+        },
+    } satisfies UserConfigItem
+}
+function _vueConfig() {
+    return {
+        files: ['**/*.vue'],
+        rules: {
+            'vue/attributes-order': [
+                'error',
+                {
+                    alphabetical: true,
+                    order: [
+                        'DEFINITION',
+                        'LIST_RENDERING',
+                        'CONDITIONALS',
+                        'RENDER_MODIFIERS',
+                        'GLOBAL',
+                        ['UNIQUE', 'SLOT'],
+                        'TWO_WAY_BINDING',
+                        'OTHER_DIRECTIVES',
+                        'OTHER_ATTR',
+                        'EVENTS',
+                        'CONTENT',
+                    ],
+                },
+            ],
+            'vue/block-lang': ['error', { script: { lang: 'ts' } } ],
+            'vue/component-api-style': ['error', ['script-setup'] ],
+            'vue/component-tags-order': ['error', { order: ['script', 'template', 'style'] } ],
+            'vue/define-emits-declaration': ['error', 'type-based'],
+            'vue/define-props-declaration': ['error', 'type-based'],
+        },
+    }
+}
+function _typescriptConfig() {
+    return {
+        files: ['**/*.ts', '**/*.tsx', '**/*.vue'],
+        rules: {
+            'ts/ban-ts-comment': [
+                'error',
+                {
+                    'ts-expect-error': false,
+                },
+            ],
+            'ts/consistent-type-definitions': 'off',
+            'ts/no-redeclare': 'off',
+            'ts/no-use-before-define': 'off',
+        },
+    } satisfies UserConfigItem
+}
+function _testConfig() {
+    return {
+        files: ['**/*.test.ts'],
+        rules: {
+            'no-console': 'off',
+            'test/consistent-test-it': ['error', { fn: 'test' } ],
+        },
+    } satisfies UserConfigItem
+}
+function _unicornConfig() {
+    return {
+        files: ['**/*.js', '**/*.ts', '**/*.tsx', '**/*.vue'],
+        rules: {
+            'unicorn/better-regex': ['error', { sortCharacterClasses: false } ],
+            'unicorn/catch-error-name': 'error',
+            'unicorn/consistent-destructuring': 'error',
+            'unicorn/consistent-function-scoping': 'error',
+            'unicorn/explicit-length-check': 'error',
+            'unicorn/filename-case': ['error', { case: 'kebabCase' } ],
+            'unicorn/new-for-builtins': 'error',
+            'unicorn/no-array-callback-reference': 'error',
+            'unicorn/no-array-push-push': 'error',
+            'unicorn/no-array-reduce': 'error',
+            'unicorn/no-await-expression-member': 'error',
+            'unicorn/no-empty-file': 'error',
+            'unicorn/no-lonely-if': 'error',
+            'unicorn/no-useless-fallback-in-spread': 'error',
+            'unicorn/no-useless-undefined': 'error',
+            'unicorn/numeric-separators-style': 'error',
+            'unicorn/prefer-date-now': 'error',
+            'unicorn/prefer-module': 'error',
+            'unicorn/prefer-optional-catch-binding': 'error',
+            'unicorn/prefer-set-has': 'error',
+            'unicorn/prefer-string-slice': 'error',
+            'unicorn/prefer-ternary': 'error',
+            'unicorn/switch-case-braces': ['error', 'always'],
         },
     } satisfies UserConfigItem
 }
