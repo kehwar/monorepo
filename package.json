@@ -1,7 +1,7 @@
 {
     "name": "@kehwar/toolbox",
     "type": "module",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "packageManager": "pnpm@8.12.1",
     "description": "Collection of personal config and utilities",
     "author": "Kehwar <erickkwr@gmail.com>",
