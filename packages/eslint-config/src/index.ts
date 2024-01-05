@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+
 import antfu from '@antfu/eslint-config'
 import _ from 'lodash'
 import { compatExtends } from './compat'
@@ -12,9 +14,12 @@ export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigI
         _.defaultsDeep(options, defaultConfig),
         ..._eslintConfig(),
         ..._importsConfig(),
+        ..._lodashConfig(),
+        ..._promiseConfig(),
+        ..._sonarjsConfig(),
         ..._stylisticConfig(options),
-        ..._testConfig(),
         ..._tailwindConfig(),
+        ..._testConfig(),
         ..._typescriptConfig(),
         ..._unicornConfig(),
         ..._yamlConfig(),
@@ -73,6 +78,36 @@ function _importsConfig() {
                         ],
                     },
                 ],
+            },
+        } satisfies UserConfigItem,
+    ]
+}
+function _lodashConfig() {
+    return [
+        ...compatExtends('plugin:lodash/recommended'),
+        {
+            rules: {
+                'lodash/chain-style': ['error', 'explicit'],
+                'lodash/chaining': ['error', 'always', 2],
+                'lodash/import-scope': ['error', 'full'],
+                'lodash/matches-prop-shorthand': ['error', 'never'],
+                'lodash/prefer-lodash-method': 'off',
+                'lodash/prefer-lodash-typecheck': 'off',
+                'lodash/prop-shorthand': ['error', 'never'],
+            },
+        } satisfies UserConfigItem,
+    ]
+}
+function _promiseConfig() {
+    return compatExtends('plugin:promise/recommended')
+}
+function _sonarjsConfig() {
+    return [
+        ...compatExtends('plugin:sonarjs/recommended'),
+        {
+            rules: {
+                'sonarjs/prefer-immediate-return': 'off',
+                'sonarjs/prefer-single-boolean-return': 'off',
             },
         } satisfies UserConfigItem,
     ]
@@ -161,12 +196,47 @@ function _stylisticConfig(options: OptionsConfig) {
         } satisfies UserConfigItem,
     ]
 }
-function _yamlConfig() {
+function _tailwindConfig() {
+    return [
+        ...compatExtends('plugin:tailwindcss/recommended'),
+        {
+            rules: {
+                'tailwindcss/no-custom-classname': [
+                    'warn',
+                    {
+                        cssFiles: [],
+                        whitelist: ['pi', 'pi-.+', 'p-.+', 'i-.+'],
+                    },
+                ],
+            },
+        } satisfies UserConfigItem,
+    ]
+}
+function _testConfig() {
     return [
         {
-            files: ['**/*.y?(a)ml'],
+            files: ['**/*.test.?([cm])[jt]s?(x)'],
             rules: {
-                'yaml/indent': ['error', 2],
+                'no-console': 'off',
+                'test/consistent-test-it': ['error', { fn: 'test' } ],
+            },
+        } satisfies UserConfigItem,
+    ]
+}
+function _typescriptConfig() {
+    return [
+        {
+            files: ['**/*.?([cm])[jt]s?(x)', '**/*.vue'],
+            rules: {
+                'ts/ban-ts-comment': [
+                    'error',
+                    {
+                        'ts-expect-error': false,
+                    },
+                ],
+                'ts/consistent-type-definitions': 'off',
+                'ts/no-redeclare': 'off',
+                'ts/no-use-before-define': 'off',
             },
         } satisfies UserConfigItem,
     ]
@@ -204,31 +274,12 @@ function _vueConfig() {
         },
     ]
 }
-function _typescriptConfig() {
+function _yamlConfig() {
     return [
         {
-            files: ['**/*.?([cm])[jt]s?(x)', '**/*.vue'],
+            files: ['**/*.y?(a)ml'],
             rules: {
-                'ts/ban-ts-comment': [
-                    'error',
-                    {
-                        'ts-expect-error': false,
-                    },
-                ],
-                'ts/consistent-type-definitions': 'off',
-                'ts/no-redeclare': 'off',
-                'ts/no-use-before-define': 'off',
-            },
-        } satisfies UserConfigItem,
-    ]
-}
-function _testConfig() {
-    return [
-        {
-            files: ['**/*.test.?([cm])[jt]s?(x)'],
-            rules: {
-                'no-console': 'off',
-                'test/consistent-test-it': ['error', { fn: 'test' } ],
+                'yaml/indent': ['error', 2],
             },
         } satisfies UserConfigItem,
     ]
@@ -263,22 +314,6 @@ function _unicornConfig() {
                 'unicorn/switch-case-braces': ['error', 'always'],
             },
         } satisfies UserConfigItem,
-    ]
-}
-function _tailwindConfig() {
-    return [
-        ...compatExtends('plugin:tailwindcss/recommended'),
-        {
-            rules: {
-                'tailwindcss/no-custom-classname': [
-                    'warn',
-                    {
-                        cssFiles: [],
-                        whitelist: ['pi', 'pi-.+', 'p-.+', 'i-.+'],
-                    },
-                ],
-            },
-        },
     ]
 }
 
