@@ -36,6 +36,10 @@
     },
     "dependencies": {
         "@antfu/eslint-config": "2.6.1",
+        "eslint-plugin-lodash": "^7.4.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-sonarjs": "^0.23.0",
+        "eslint-plugin-tailwindcss": "^3.13.1",
         "lodash": "^4.17.21"
     },
     "devDependencies": {
