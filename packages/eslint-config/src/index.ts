@@ -1,10 +1,10 @@
 import antfu from '@antfu/eslint-config'
-import type { FlatConfigItem, OptionsConfig } from '@antfu/eslint-config'
+import type { OptionsConfig, UserConfigItem } from '@antfu/eslint-config'
 import _ from 'lodash'
 
 const defaultConfig = { stylistic: { indent: 4, quotes: 'single' } } satisfies OptionsConfig
 
-export function eslintConfig(options: OptionsConfig = {}, ...custom: FlatConfigItem[]) {
+export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigItem[]) {
     return antfu(
 
         // Defaults
@@ -35,7 +35,7 @@ function _eslintConfig() {
             ],
             'no-multi-assign': 'error',
         },
-    }
+    } satisfies UserConfigItem
 }
 function _stylisticConfig(options: OptionsConfig) {
     const quotes = typeof options.stylistic === 'object' && options.stylistic.quotes ? options.stylistic.quotes : defaultConfig.stylistic.quotes
@@ -117,7 +117,7 @@ function _stylisticConfig(options: OptionsConfig) {
             ],
             'style/quotes': ['error', quotes, { allowTemplateLiterals: true, avoidEscape: true } ],
         },
-    }
+    } satisfies UserConfigItem
 }
 function _yamlConfig() {
     return {
@@ -125,7 +125,7 @@ function _yamlConfig() {
         rules: {
             'yaml/indent': ['error', 2],
         },
-    }
+    } satisfies UserConfigItem
 }
 
 export default eslintConfig
