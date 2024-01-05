@@ -1,7 +1,7 @@
 {
     "name": "@kehwar/eslint-config",
     "type": "module",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "sideEffects": false,
     "exports": {
         ".": {
@@ -28,6 +28,7 @@
         "build": "unbuild",
         "dev": "unbuild --stub",
         "lint": "eslint .",
+        "release": "bumpp && pnpm publish",
         "start": "esno src/index.ts",
         "typecheck": "tsc --noEmit"
     },

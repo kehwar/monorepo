@@ -4,11 +4,15 @@
         "lib": ["ESNext"],
         "module": "ESNext",
         "moduleResolution": "Bundler",
+        "paths": {
+            "@kehwar/eslint-config": ["./packages/eslint-config/"]
+        },
         "resolveJsonModule": true,
         "strict": true,
         "strictNullChecks": true,
         "esModuleInterop": true,
         "skipDefaultLibCheck": true,
         "skipLibCheck": true
+
     }
 }
