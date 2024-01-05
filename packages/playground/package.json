@@ -30,6 +30,7 @@
         "dev": "unbuild --stub",
         "lint": "eslint .",
         "lint:config": "eslint-flat-config-viewer",
+        "prepublishOnly": "build",
         "start": "esno src/index.ts",
         "typecheck": "tsc --noEmit"
     },
