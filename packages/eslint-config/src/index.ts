@@ -1,6 +1,6 @@
 import antfu from '@antfu/eslint-config'
-import type { OptionsConfig, UserConfigItem } from '@antfu/eslint-config'
 import _ from 'lodash'
+import type { OptionsConfig, UserConfigItem } from '@antfu/eslint-config'
 
 const defaultConfig = { stylistic: { indent: 4, quotes: 'single' } } satisfies OptionsConfig
 
@@ -10,6 +10,7 @@ export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigI
         // Defaults
         _.defaultsDeep(options, defaultConfig),
         _eslintConfig(),
+        _importsConfig(),
         _stylisticConfig(options),
         _testConfig(),
         _typescriptConfig(),
@@ -26,7 +27,7 @@ export function eslintVueConfig(options: OptionsConfig = {}, ...custom: UserConf
 
 function _eslintConfig() {
     return {
-        files: ['**/*.js', '**/*.ts', '**/*.tsx', '**/*.vue'],
+        files: ['**/*.?([cm])[jt]s?(x)', '**/*.vue'],
         rules: {
             'camelcase': [
                 'error',
@@ -42,11 +43,39 @@ function _eslintConfig() {
         },
     } satisfies UserConfigItem
 }
+function _importsConfig() {
+    return {
+        files: ['**/*.?([cm])[jt]s?(x)', '**/*.vue'],
+        rules: {
+            'import/newline-after-import': ['error', { considerComments: false } ],
+            'import/order': [
+                'error',
+                {
+                    alphabetize: {
+                        caseInsensitive: true,
+                        order: 'asc',
+                    },
+                    groups: [
+                        'builtin',
+                        'external',
+                        'internal',
+                        'unknown',
+                        'parent',
+                        'index',
+                        'sibling',
+                        'object',
+                        'type',
+                    ],
+                },
+            ],
+        },
+    } satisfies UserConfigItem
+}
 function _stylisticConfig(options: OptionsConfig) {
     const quotes = typeof options.stylistic === 'object' && options.stylistic.quotes ? options.stylistic.quotes : defaultConfig.stylistic.quotes
     const indent = typeof options.stylistic === 'object' && options.stylistic.indent ? options.stylistic.indent : defaultConfig.stylistic.indent
     return {
-        files: ['**/*.js', '**/*.ts', '**/*.tsx', '**/*.vue'],
+        files: ['**/*.?([cm])[jt]s?(x)', '**/*.vue'],
         rules: {
             'style/array-bracket-newline': ['error', { multiline: true } ],
             'style/array-bracket-spacing': [
@@ -165,7 +194,7 @@ function _vueConfig() {
 }
 function _typescriptConfig() {
     return {
-        files: ['**/*.ts', '**/*.tsx', '**/*.vue'],
+        files: ['**/*.?([cm])[jt]s?(x)', '**/*.vue'],
         rules: {
             'ts/ban-ts-comment': [
                 'error',
@@ -181,7 +210,7 @@ function _typescriptConfig() {
 }
 function _testConfig() {
     return {
-        files: ['**/*.test.ts'],
+        files: ['**/*.test.?([cm])[jt]s?(x)'],
         rules: {
             'no-console': 'off',
             'test/consistent-test-it': ['error', { fn: 'test' } ],
@@ -190,7 +219,7 @@ function _testConfig() {
 }
 function _unicornConfig() {
     return {
-        files: ['**/*.js', '**/*.ts', '**/*.tsx', '**/*.vue'],
+        files: ['**/*.?([cm])[jt]s?(x)', '**/*.vue'],
         rules: {
             'unicorn/better-regex': ['error', { sortCharacterClasses: false } ],
             'unicorn/catch-error-name': 'error',
