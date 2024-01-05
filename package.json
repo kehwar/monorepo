@@ -41,7 +41,7 @@
         "lint": "eslint .",
         "lint:config": "eslint-flat-config-viewer",
         "prepublishOnly": "nr build",
-        "release": "bumpp && pnpm publish",
+        "release": "nr -r release && bumpp && pnpm publish",
         "start": "esno src/index.ts",
         "test": "vitest --test-timeout=300000 --ui --silent",
         "typecheck": "tsc --noEmit",
