@@ -10,19 +10,23 @@ const defaultConfig = { stylistic: { indent: 4, quotes: 'single' } } satisfies O
 export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigItem[]) {
     return antfu(
 
-        // Defaults
+        // Options
         _.defaultsDeep(options, defaultConfig),
+
+        // Native
         ..._eslintConfig(),
         ..._importsConfig(),
-        ..._lodashConfig(),
-        ..._promiseConfig(),
-        ..._sonarjsConfig(),
         ..._stylisticConfig(options),
-        ..._tailwindConfig(),
         ..._testConfig(),
         ..._typescriptConfig(),
         ..._unicornConfig(),
         ..._yamlConfig(),
+
+        // Plugins
+        ..._lodashConfig(),
+        ..._promiseConfig(),
+        ..._sonarjsConfig(),
+        ..._tailwindConfig(),
 
         // Custom
         ...custom,
