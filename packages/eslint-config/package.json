@@ -39,7 +39,7 @@
         "dev": "unbuild --stub",
         "lint": "eslint .",
         "prepublishOnly": "nr build",
-        "release": "bumpp && pnpm publish",
+        "release": "bumpp --no-tag && pnpm publish",
         "start": "esno src/index.ts",
         "typecheck": "tsc --noEmit"
     },
