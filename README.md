@@ -1,6 +1,6 @@
 # @kehwar/toolbox
 
-Opinionated collection of Javascript / TypeScript configs and utils by [@kehwar](https://github.com/kehwar).
+Monorepo for personal apps, configs and utilities.
 
 ## License
 

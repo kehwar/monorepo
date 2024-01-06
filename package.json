@@ -1,5 +1,5 @@
 {
-    "name": "@kehwar/mono",
+    "name": "@kehwar/monorepo",
     "type": "module",
     "private": "true",
     "packageManager": "pnpm@8.12.1",
