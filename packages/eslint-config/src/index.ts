@@ -91,6 +91,7 @@ function _lodashConfig() {
                 'lodash/chaining': ['error', 'always', 2],
                 'lodash/import-scope': ['error', 'full'],
                 'lodash/matches-prop-shorthand': ['error', 'never'],
+                'lodash/prefer-constant': 'off',
                 'lodash/prefer-lodash-method': 'off',
                 'lodash/prefer-lodash-typecheck': 'off',
                 'lodash/prop-shorthand': ['error', 'never'],
@@ -209,8 +210,14 @@ function _tailwindConfig() {
                     },
                 ],
             },
-        } satisfies UserConfigItem,
-    ]
+        },
+        {
+            files: ['tailwind.config.js'],
+            rules: {
+                'unicorn/prefer-module': 'off',
+            },
+        },
+    ] satisfies UserConfigItem[]
 }
 function _testConfig() {
     return [
