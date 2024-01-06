@@ -7,7 +7,7 @@ import type { OptionsConfig, UserConfigItem } from '@antfu/eslint-config'
 
 const defaultConfig = { stylistic: { indent: 4, quotes: 'single' } } satisfies OptionsConfig
 
-export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigItem[]) {
+function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigItem[]) {
     return antfu(
 
         // Options
@@ -20,6 +20,7 @@ export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigI
         ..._testConfig(),
         ..._typescriptConfig(),
         ..._unicornConfig(),
+        ..._vueConfig(),
         ..._yamlConfig(),
 
         // Plugins
@@ -31,9 +32,6 @@ export function eslintConfig(options: OptionsConfig = {}, ...custom: UserConfigI
         // Custom
         ...custom,
     )
-}
-export function eslintVueConfig(options: OptionsConfig = {}, ...custom: UserConfigItem[]) {
-    return eslintConfig(options, _vueConfig(), ...custom)
 }
 
 function _eslintConfig() {
