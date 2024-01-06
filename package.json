@@ -1,17 +1,17 @@
 {
-    "name": "@kehwar/toolbox",
+    "name": "@kehwar/mono",
     "type": "module",
-    "version": "0.0.12",
+    "private": "true",
     "packageManager": "pnpm@8.12.1",
-    "description": "Collection of personal config and utilities",
+    "description": "Monorepo for personal apps, configs and utilities",
     "author": "Kehwar <erickkwr@gmail.com>",
     "license": "MIT",
-    "homepage": "https://github.com/kehwar/toolbox#readme",
+    "homepage": "https://github.com/kehwar/mono#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kehwar/toolbox.git"
+        "url": "git+https://github.com/kehwar/mono.git"
     },
-    "bugs": "https://github.com/kehwar/toolbox/issues",
+    "bugs": "https://github.com/kehwar/mono/issues",
     "keywords": [],
     "sideEffects": false,
     "exports": {
