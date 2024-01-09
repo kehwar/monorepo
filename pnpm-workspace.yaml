@@ -1,5 +1,6 @@
 packages:
   - playground
   - docs
+  - apps/*
   - packages/*
   - examples/*

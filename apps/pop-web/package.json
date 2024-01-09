@@ -1,0 +1,28 @@
+{
+    "name": "pop-web",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
+    },
+    "dependencies": {
+        "@nuxt/image": "^1.1.0",
+        "@nuxt/ui": "^2.11.1",
+        "@nuxtjs/tailwindcss": "^6.10.3",
+        "dedent": "^1.5.1",
+        "fast-glob": "^3.3.2",
+        "nuxt-lodash": "^2.5.3",
+        "nuxt-primevue": "^0.2.2",
+        "pathe": "^1.1.1",
+        "primevue": "^3.45.0"
+    },
+    "devDependencies": {
+        "nuxt": "^3.9.0",
+        "vue": "^3.4.5",
+        "vue-router": "^4.2.5"
+    }
+}
