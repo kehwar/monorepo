@@ -279,6 +279,7 @@ function _vueConfig() {
                 'vue/component-tags-order': ['error', { order: ['script', 'template', 'style'] } ],
                 'vue/define-emits-declaration': ['error', 'type-based'],
                 'vue/define-props-declaration': ['error', 'type-based'],
+                'vue/max-attributes-per-line': ['error', { singleline: { max: 9 }, multiline: { max: 1 } } ],
             },
         },
     ]
