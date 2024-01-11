@@ -6,6 +6,11 @@ export default defineNuxtConfig({
     primevue: {
         components: {
             prefix: 'P',
+            include: ['Image'],
+        },
+        composables: {
+            exclude: ['useToast'],
         },
     },
+    colorMode: { preference: 'light' },
 })

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const images = getImageUrls()
+const images = getImageUrls().slice(0, 1)
 </script>
 
 <template>
-    <div class="flex w-full flex-wrap gap-2">
+    <div class="grid w-full grid-cols-2 gap-2">
         <PImage
             v-for="(image) in images"
             :key="image.i"
@@ -15,10 +15,10 @@ const images = getImageUrls()
             }"
         >
             <template #image>
-                <NuxtImg fit="inside" format="webp" height="60px" :src="image.src" />
+                <NuxtImg fit="inside" :height="200" :src="image.src" />
             </template>
             <template #preview="slotProps">
-                <NuxtImg fit="inside" format="webp" height="800px" :src="image.src" :style="slotProps.style" />
+                <NuxtImg class="h-[100vh]" fit="inside" sizes="100vw sm:50vw md:400px lg:800px" :src="image.src" :style="slotProps.style" />
             </template>
         </PImage>
     </div>
