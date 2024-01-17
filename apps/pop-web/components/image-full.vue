@@ -3,7 +3,9 @@ defineProps<{
     src: string
 }>()
 
+const { full: imgProps } = getImageProps()
 const isLoaded = ref(false)
+
 function setIsLoaded(value: boolean) {
     isLoaded.value = value
 }
@@ -12,12 +14,7 @@ function setIsLoaded(value: boolean) {
 <template>
     <NuxtImg
         class="h-[100vh]"
-        v-bind="$attrs"
-        fit="inside"
-        format="webp"
-        loading="lazy"
-        :modifiers="{ rotate: null }"
-        sizes="100vw sm:50vw md:400px lg:800px"
+        v-bind="{ ...imgProps, ... $attrs }"
         :src="src"
         @load="setIsLoaded(true)"
     />
