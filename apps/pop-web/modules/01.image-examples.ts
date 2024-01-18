@@ -33,14 +33,14 @@ export default defineNuxtModule({
             write: true,
             getContents: () => dedent`
                 import images from './images.json'
-                export const getImageUrls = () => images.map((src, i) => ({ src, i }))
+                export const getImagePaths = () => images
             `,
         })
         const resolver = createResolver(nuxt.options.buildDir)
         addImports(
             [
                 {
-                    name: 'getImageUrls',
+                    name: 'getImagePaths',
                     from: resolver.resolve('images'),
                 },
             ],
@@ -48,7 +48,7 @@ export default defineNuxtModule({
         addServerImports(
             [
                 {
-                    name: 'getImageUrls',
+                    name: 'getImagePaths',
                     from: resolver.resolve('images'),
                 },
             ],
