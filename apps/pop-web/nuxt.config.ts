@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     primevue: {
         components: {
             prefix: 'P',
-            include: ['DeferredContent', 'Image', 'Skeleton'],
+            include: ['DeferredContent', 'Image', 'ProgressSpinner', 'Skeleton'],
         },
         composables: {
             exclude: ['useToast'],
