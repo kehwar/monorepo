@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: ['nuxt-primevue', '@nuxt/image', 'nuxt-lodash', '@nuxt/ui', '@vueuse/nuxt'],
-    css: ['primevue/resources/themes/lara-light-purple/theme.css'],
     primevue: {
         components: {
             prefix: 'P',
@@ -13,4 +12,7 @@ export default defineNuxtConfig({
         },
     },
     colorMode: { preference: 'light' },
+    tailwindcss: {
+        cssPath: '~/assets/theme/theme.css',
+    },
 })
