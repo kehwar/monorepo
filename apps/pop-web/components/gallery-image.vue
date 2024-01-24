@@ -15,7 +15,7 @@ const hidden = ref(false)
         <PImage preview :pt="{ previewContainer: { class: 'h-[100vh] w-[100vw]' }, root: { class: 'h-full w-full bg-gray-100' }, icon: { class: 'touch:!hidden' } }">
             <template #image>
                 <NuxtImg
-                    class="h-full w-full object-cover"
+                    class="size-full object-cover"
                     v-bind="tile"
                     :src="src"
                     @error="hidden = true"
@@ -23,9 +23,9 @@ const hidden = ref(false)
                 />
             </template>
             <template #preview="slotProps">
-                <PProgressSpinner v-if="!previewLoaded" class="absolute left-[calc(50%-3rem)] top-[calc(50%-3rem)] h-[6rem] w-[6rem]" />
+                <PProgressSpinner v-if="!previewLoaded" class="absolute left-[calc(50%-3rem)] top-[calc(50%-3rem)] size-[6rem]" />
                 <NuxtImg
-                    class="h-full w-full object-contain"
+                    class="size-full object-contain"
                     v-bind="full"
                     :src="src"
                     :style="slotProps.style"

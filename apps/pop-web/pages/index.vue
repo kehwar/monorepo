@@ -7,7 +7,7 @@ const paths = getImagePaths()
         <GalleryImage
             v-for="(src, i) in paths"
             :key="i"
-            class="h-[160px] w-[160px] overflow-hidden rounded-3xl sm:h-[200px] sm:w-[200px]"
+            class="size-[160px] overflow-hidden rounded-3xl sm:size-[200px]"
             :src="src"
         />
     </div>
