@@ -58,7 +58,7 @@ export const RemoteFunctionPatterns = {
 export const DefaultModuleOptions = {
     pattern: ['**/*.trpc.{ts,js,mjs}', '**/*.trqc.{ts,js,mjs}', '**/*.trmc.{ts,js,mjs}'] as string | string[],
     inject: {
-        context: undefined as unknown as string | undefined,
+        context: 'server/trpc/context',
     },
     client: {
         alias: 'trpc',
@@ -69,13 +69,33 @@ export const DefaultModuleOptions = {
     remoteFunctions: {
         enabled: true as const, // TODO: allow disabling remote functions
         patterns: {
-            query: [] as string[],
+            query: ['asd'] as string[],
             mutation: [] as string[],
         },
         default: 'error' as 'query' | 'mutation' | 'error',
     },
+} as const satisfies ModuleOptions
+
+export type ModuleOptions = {
+    pattern: string | string[]
+    inject: {
+        context: string
+    }
+    client: {
+        alias: string
+    }
+    server: {
+        baseUrl: string
+    }
+    remoteFunctions: {
+        enabled: boolean
+        patterns: {
+            query: string[]
+            mutation: string[]
+        }
+        default: 'query' | 'mutation' | 'error'
+    }
 }
-export type ModuleOptions = typeof DefaultModuleOptions
 export type Options = ModuleOptions & {
     cwd: string
     nuxt: Nuxt

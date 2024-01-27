@@ -6,15 +6,7 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     experimental: { asyncContext: true },
     trpc: {
-        inject: {
-            context: 'server/trpc/context',
-        },
         remoteFunctions: {
-            enabled: true,
-            patterns: {
-                query: [],
-                mutation: [],
-            },
             default: 'query',
         },
     },

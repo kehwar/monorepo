@@ -1,14 +1,15 @@
 import { addImports, addPluginTemplate, addServerHandler, addServerImports, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import fg from 'fast-glob'
 import { addTransformerPlugin } from './runtime/add-transformer-plugin'
-import { DefaultModuleOptions, type Options } from './runtime/options'
+import { DefaultModuleOptions, type ModuleOptions, type Options } from './runtime/options'
 import { parseProcedurePath } from './runtime/parse-procedure-path'
 import { getApiTemplate } from './templates/get-api-template'
 import { getClientPluginTemplate } from './templates/get-client-plugin-template'
 import { getContextTemplate } from './templates/get-context-template'
 import { getServerHandlerTemplate } from './templates/get-server-handler-template'
+import type { PartialDeep } from 'type-fest'
 
-export default defineNuxtModule({
+export default defineNuxtModule<PartialDeep<ModuleOptions>>({
     meta: {
         name: '@kehwar/nuxt-trpc',
         configKey: 'trpc',
@@ -19,7 +20,7 @@ export default defineNuxtModule({
     // The function holding your module logic, it can be asynchronous
     async setup(moduleOptions, nuxt) {
         // Options
-        const options: Options = { ...moduleOptions, nuxt, cwd: nuxt.options.srcDir }
+        const options: Options = { ...(moduleOptions as ModuleOptions), nuxt, cwd: nuxt.options.srcDir }
 
         // Scan TRPC files
         const files: string[] = []
