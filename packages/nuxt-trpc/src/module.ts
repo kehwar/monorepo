@@ -1,13 +1,12 @@
 import { addImports, addPluginTemplate, addServerHandler, addServerImports, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import fg from 'fast-glob'
-import _ from 'lodash'
+import { addTransformerPlugin } from './runtime/add-transformer-plugin'
 import { DefaultModuleOptions, type Options } from './runtime/options'
 import { parseProcedurePath } from './runtime/parse-procedure-path'
-import { addTransformerPlugin } from './runtime/add-transformer-plugin'
 import { getApiTemplate } from './templates/get-api-template'
 import { getClientPluginTemplate } from './templates/get-client-plugin-template'
-import { getServerHandlerTemplate } from './templates/get-server-handler-template'
 import { getContextTemplate } from './templates/get-context-template'
+import { getServerHandlerTemplate } from './templates/get-server-handler-template'
 
 export default defineNuxtModule({
     meta: {
@@ -38,7 +37,7 @@ export default defineNuxtModule({
         await scanTRPCFiles()
 
         // Get Procedures
-        const procedures = files.map(file => parseProcedurePath(file, options))
+        const procedures = files.map((file) => parseProcedurePath(file, options))
 
         // Write template files
         addTemplate({
@@ -79,37 +78,48 @@ export default defineNuxtModule({
 
         // Write autoimports
         addImports(
-            [{
-                name: 'useTRPCRequestHeaders',
-                from: resolver.resolve('trpc/client-plugin'),
-            }, {
-                name: 'defineTRPCContext',
-                from: resolver.resolve('trpc/context'),
-            }, {
-                name: 'defineTRPCProcedure',
-                from: resolver.resolve('trpc/api'),
-            }, {
-                name: 'defineTRPCQuery',
-                from: resolver.resolve('trpc/api'),
-            }, {
-                name: 'defineTRPCMutation',
-                from: resolver.resolve('trpc/api'),
-            }],
+            [
+                {
+                    name: 'useTRPCRequestHeaders',
+                    from: resolver.resolve('trpc/client-plugin'),
+                },
+                {
+                    name: 'defineTRPCContext',
+                    from: resolver.resolve('trpc/context'),
+                },
+                {
+                    name: 'defineTRPCProcedure',
+                    from: resolver.resolve('trpc/api'),
+                },
+                {
+                    name: 'defineTRPCQuery',
+                    from: resolver.resolve('trpc/api'),
+                },
+                {
+                    name: 'defineTRPCMutation',
+                    from: resolver.resolve('trpc/api'),
+                },
+            ],
         )
         addServerImports(
-            [{
-                name: 'defineTRPCContext',
-                from: resolver.resolve('trpc/context'),
-            }, {
-                name: 'defineTRPCProcedure',
-                from: resolver.resolve('trpc/api'),
-            }, {
-                name: 'defineTRPCQuery',
-                from: resolver.resolve('trpc/api'),
-            }, {
-                name: 'defineTRPCMutation',
-                from: resolver.resolve('trpc/api'),
-            }],
+            [
+                {
+                    name: 'defineTRPCContext',
+                    from: resolver.resolve('trpc/context'),
+                },
+                {
+                    name: 'defineTRPCProcedure',
+                    from: resolver.resolve('trpc/api'),
+                },
+                {
+                    name: 'defineTRPCQuery',
+                    from: resolver.resolve('trpc/api'),
+                },
+                {
+                    name: 'defineTRPCMutation',
+                    from: resolver.resolve('trpc/api'),
+                },
+            ],
         )
 
         // Add server handler

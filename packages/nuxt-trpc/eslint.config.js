@@ -1,7 +1,3 @@
-import antfu from '@antfu/eslint-config'
+import config from '@kehwar/eslint-config'
 
-export default antfu({
-    stylistic: {
-        indent: 4,
-    },
-})
+export default config()

@@ -1,8 +1,8 @@
-import _ from 'lodash'
-import dedent from 'dedent'
 import { createResolver } from '@nuxt/kit'
-import type { TRPCProcedure } from '../runtime/parse-procedure-path'
+import dedent from 'dedent'
+import _ from 'lodash'
 import type { Options } from '../runtime/options'
+import type { TRPCProcedure } from '../runtime/parse-procedure-path'
 
 export function getServerHandlerTemplate(procedures: TRPCProcedure[], options: Options) {
     // Imports
@@ -27,9 +27,7 @@ export function getServerHandlerTemplate(procedures: TRPCProcedure[], options: O
             }
             return str
         }
-        return [
-            `export const routes = router({\n${stringify(routeMap, 1)}})`,
-        ].join('\n')
+        return [`export const routes = router({\n${stringify(routeMap, 1)}})`].join('\n')
     })()
 
     // Context

@@ -9,12 +9,5 @@ export default defineNuxtConfig({
         inject: {
             context: 'server/trpc/context',
         },
-        remoteFunctions: {
-            patterns: {
-                mutation: [
-                    'say-test*',
-                ],
-            },
-        },
     },
 })

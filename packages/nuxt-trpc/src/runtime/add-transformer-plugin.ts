@@ -1,11 +1,10 @@
 import { addVitePlugin } from '@nuxt/kit'
 import { createFilter } from '@rollup/pluginutils'
-import _ from 'lodash'
-import type { Plugin } from 'vite'
 import { init, parse } from 'es-module-lexer'
+import { parseProcedurePath } from './parse-procedure-path'
 import type { Options } from './options'
 import type { TRPCProcedure } from './parse-procedure-path'
-import { parseProcedurePath } from './parse-procedure-path'
+import type { Plugin } from 'vite'
 
 export function addTransformerPlugin(options: Options) {
     const filter = createFilter(options.pattern)
@@ -29,6 +28,6 @@ async function transformExportsToTRPCCalls(src: string, { procedureName, routerP
         throw new Error(`Could not determine action for ${baseName}`)
     await init
     const [, exports] = parse(src)
-    const exportList = exports.map(e => e.n).filter(e => e !== 'default')
-    return exportList.map(e => `export const ${e} = (...args) => useNuxtApp().$${options.client.alias}.${routerPathName}.${procedureName}.${action}(args)`).join('\n')
+    const exportList = exports.map((e) => e.n).filter((e) => e !== 'default')
+    return exportList.map((e) => `export const ${e} = (...args) => useNuxtApp().$${options.client.alias}.${routerPathName}.${procedureName}.${action}(args)`).join('\n')
 }

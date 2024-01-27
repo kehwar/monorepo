@@ -1,12 +1,13 @@
+<!-- eslint-disable unicorn/no-array-push-push -->
+<!-- eslint-disable no-console -->
 <!-- eslint-disable antfu/top-level-function -->
 <script setup lang="ts">
-import _ from 'lodash'
 import { sayTest } from './features/dev/src/say-test.trpc'
-import { sayHello } from './features/landing/src/say-hello.trpc'
 import { sayGoodbye } from './features/landing/src/say-goodbye.trpc'
+import { sayHello } from './features/landing/src/say-hello.trpc'
 
 onMounted(() => {
-
+    console.log('Mounted')
 })
 
 const arr1 = ref<string[]>([])
@@ -21,7 +22,7 @@ async function action() {
     <button @click="() => action()">
         Click
     </button>
-    <div v-for="message of arr1">
+    <div v-for="(message, i) of arr1" :key="i">
         {{ message }}
     </div>
 </template>

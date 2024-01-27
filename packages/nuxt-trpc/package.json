@@ -36,7 +36,6 @@
         "trpc-nuxt": "^0.10.12"
     },
     "dependencies": {
-        "@antfu/eslint-config": "^2.1.1",
         "@nuxt/kit": "^3.8.2",
         "@rollup/pluginutils": "^5.0.5",
         "dedent": "^1.5.1",
@@ -48,6 +47,7 @@
         "vite": "^5.0.2"
     },
     "devDependencies": {
+        "@kehwar/eslint-config": "workspace:*",
         "@nuxt/devtools": "latest",
         "@nuxt/eslint-config": "^0.2.0",
         "@nuxt/module-builder": "^0.5.4",
@@ -64,6 +64,7 @@
         "nuxt": "^3.8.2",
         "superjson": "^2.2.1",
         "trpc-nuxt": "^0.10.12",
+        "type-fest": "^4.10.1",
         "vitest": "^0.33.0"
     }
 }

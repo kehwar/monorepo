@@ -1,5 +1,5 @@
-import dedent from 'dedent'
 import { createResolver } from '@nuxt/kit'
+import dedent from 'dedent'
 import type { Options } from '../runtime/options'
 
 export function getApiTemplate(options: Options) {
