@@ -13,50 +13,21 @@
     },
     "bugs": "https://github.com/kehwar/mono/issues",
     "keywords": [],
-    "sideEffects": false,
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.cjs"
-        }
-    },
-    "main": "./dist/index.mjs",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "typesVersions": {
-        "*": {
-            "*": [
-                "./dist/*",
-                "./dist/index.d.ts"
-            ]
-        }
-    },
-    "files": [
-        "dist"
-    ],
     "scripts": {
-        "build": "unbuild",
-        "build:all": "nr -r build && unbuild",
-        "dev": "unbuild --stub",
         "lint": "eslint .",
+        "lint:fresh": "pnpm --filter eslint-config build && pnpm lint",
         "lint:config": "eslint-flat-config-viewer",
-        "prepublishOnly": "nr build",
-        "release": "bumpp -r && pnpm -r publish",
-        "start": "esno src/index.ts",
         "test": "vitest --test-timeout=300000 --ui --silent",
-        "typecheck": "tsc --noEmit",
-        "prepare": "simple-git-hooks"
-    },
-    "dependencies": {
-        "@kehwar/eslint-config": "workspace:*"
+        "typecheck": "tsc --noEmit"
     },
     "workspaces": [
+        "apps/*",
         "packages/*"
     ],
     "devDependencies": {
         "@antfu/ni": "^0.21.12",
         "@antfu/utils": "^0.7.7",
+        "@kehwar/eslint-config": "workspace:*",
         "@types/node": "^20.10.5",
         "@vitest/ui": "^1.1.2",
         "bumpp": "^9.2.1",
@@ -66,16 +37,9 @@
         "lint-staged": "^15.2.0",
         "pnpm": "^8.12.1",
         "rimraf": "^5.0.5",
-        "simple-git-hooks": "^2.9.0",
         "typescript": "^5.3.3",
         "unbuild": "^2.0.0",
         "vite": "^5.0.10",
         "vitest": "^1.1.0"
-    },
-    "simple-git-hooks": {
-        "pre-commit": "pnpm lint-staged"
-    },
-    "lint-staged": {
-        "*": "eslint --fix"
     }
 }
