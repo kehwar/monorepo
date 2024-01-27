@@ -9,5 +9,13 @@ export default defineNuxtConfig({
         inject: {
             context: 'server/trpc/context',
         },
+        remoteFunctions: {
+            enabled: true,
+            patterns: {
+                query: [],
+                mutation: [],
+            },
+            default: 'query',
+        },
     },
 })
