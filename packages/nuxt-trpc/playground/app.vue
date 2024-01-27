@@ -12,9 +12,13 @@ onMounted(() => {
 
 const arr1 = ref<string[]>([])
 async function action() {
+    arr1.value = []
     arr1.value.push(await sayTest())
     arr1.value.push(await sayHello())
     arr1.value.push(await sayGoodbye())
+    arr1.value.push(await useNuxtApp().$trpc.features.dev.src.sayTest.query())
+    arr1.value.push(await useNuxtApp().$trpc.features.landing.src.sayHello.query([]))
+    arr1.value.push(await useNuxtApp().$trpc.features.landing.src.sayGoodbye.query())
 }
 </script>
 
