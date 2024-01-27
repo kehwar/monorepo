@@ -36,35 +36,35 @@
         "trpc-nuxt": "^0.10.12"
     },
     "dependencies": {
-        "@nuxt/kit": "^3.8.2",
-        "@rollup/pluginutils": "^5.0.5",
+        "@nuxt/kit": "^3.9.3",
+        "@rollup/pluginutils": "^5.1.0",
         "dedent": "^1.5.1",
         "es-module-lexer": "^1.4.1",
         "fast-glob": "^3.3.2",
         "lodash": "^4.17.21",
         "minimatch": "^9.0.3",
-        "pathe": "^1.1.1",
-        "vite": "^5.0.2"
+        "pathe": "^1.1.2",
+        "vite": "^5.0.12"
     },
     "devDependencies": {
         "@kehwar/eslint-config": "workspace:*",
-        "@nuxt/devtools": "latest",
+        "@nuxt/devtools": "^1.0.8",
         "@nuxt/eslint-config": "^0.2.0",
-        "@nuxt/module-builder": "^0.5.4",
-        "@nuxt/schema": "^3.8.2",
-        "@nuxt/test-utils": "^3.8.1",
-        "@trpc/client": "^10.44.1",
-        "@trpc/server": "^10.44.1",
+        "@nuxt/module-builder": "^0.5.5",
+        "@nuxt/schema": "^3.9.3",
+        "@nuxt/test-utils": "^3.10.0",
+        "@trpc/client": "^10.45.0",
+        "@trpc/server": "^10.45.0",
         "@types/lodash": "^4.14.202",
-        "@types/node": "^20.9.3",
-        "bumpp": "^9.2.0",
+        "@types/node": "^20.11.7",
+        "bumpp": "^9.3.0",
         "changelogen": "^0.5.5",
         "devalue": "^4.3.2",
-        "eslint": "^8.54.0",
-        "nuxt": "^3.8.2",
+        "eslint": "^8.56.0",
+        "nuxt": "^3.9.3",
         "superjson": "^2.2.1",
-        "trpc-nuxt": "^0.10.12",
+        "trpc-nuxt": "^0.10.17",
         "type-fest": "^4.10.1",
-        "vitest": "^0.33.0"
+        "vitest": "^1.2.2"
     }
 }
