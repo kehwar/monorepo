@@ -8,9 +8,8 @@ import { getApiTemplate } from './templates/get-api-template'
 import { getClientPluginTemplate } from './templates/get-client-plugin-template'
 import { getContextTemplate } from './templates/get-context-template'
 import { getServerHandlerTemplate } from './templates/get-server-handler-template'
-import type { PartialDeep } from 'type-fest'
 
-export default defineNuxtModule<PartialDeep<ModuleOptions>>({
+export default defineNuxtModule<DeepPartial<ModuleOptions>>({
     meta: {
         name: '@kehwar/nuxt-trpc',
         configKey: 'trpc',
@@ -134,3 +133,7 @@ export default defineNuxtModule<PartialDeep<ModuleOptions>>({
         addTransformerPlugin(options)
     },
 })
+
+type DeepPartial<T> = T extends object ? {
+    [P in keyof T]?: DeepPartial<T[P]>;
+} : T

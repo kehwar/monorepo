@@ -23,6 +23,7 @@
         "dev": "nuxi dev playground",
         "dev:build": "nuxi build playground",
         "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+        "release": "pnpm run prepack && pnpm publish && git push --follow-tags",
         "lint": "eslint .",
         "test": "vitest run",
         "test:watch": "vitest watch"
@@ -65,7 +66,6 @@
         "nuxt": "^3.9.3",
         "superjson": "^2.2.1",
         "trpc-nuxt": "^0.10.17",
-        "type-fest": "^4.10.1",
         "vitest": "^1.2.2"
     }
 }
