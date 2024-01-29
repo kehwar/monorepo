@@ -34,7 +34,7 @@ export default defineNuxtModule({
         await scanCaslFiles()
 
         // Files
-        const parsedPaths = files.map(file => parsePath(file, options))
+        const parsedPaths = files.map((file) => parsePath(file, options))
 
         // Resolver
         const resolver = createResolver(nuxt.options.buildDir)
