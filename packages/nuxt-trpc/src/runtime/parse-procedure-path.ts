@@ -49,6 +49,7 @@ async function getASTAction(file: string) {
     if (calleeName === 'defineTRPCMutation')
         return 'mutate'
     if (calleeName === 'defineTRPCProcedure') {
+        // TODO: Add more common sources for the action name, like using named exports or function calls instead of arrow functions
         const actionName = defaultExportAST?.arguments?.[0]?.body?.callee?.property?.name
         if (actionName === 'query')
             return 'query'
