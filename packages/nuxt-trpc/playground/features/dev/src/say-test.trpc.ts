@@ -7,6 +7,5 @@ export async function sayTest() {
 }
 
 export default defineTRPCProcedure((p) => p
-    .input(() => {})
-    .mutation(() => sayTest as unknown as string),
+    .mutation(() => sayTest() as unknown as string),
 )

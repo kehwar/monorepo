@@ -14,7 +14,7 @@ export function addTransformerPlugin(options: Options) {
         async transform(code, id, _opts) {
             if (!filter(id))
                 return
-            const procedure = parseProcedurePath(id, options)
+            const procedure = await parseProcedurePath(id, options)
             const result = await transformExportsToTRPCCalls(code, procedure, options)
             return {
                 code: result,
