@@ -42,7 +42,9 @@
         "es-module-lexer": "^1.4.1",
         "fast-glob": "^3.3.2",
         "lodash": "^4.17.21",
+        "magicast": "^0.3.3",
         "minimatch": "^9.0.3",
+        "p-map": "^7.0.1",
         "pathe": "^1.1.2",
         "vite": "^5.0.12"
     },

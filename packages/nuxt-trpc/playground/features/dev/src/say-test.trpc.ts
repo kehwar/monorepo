@@ -6,4 +6,7 @@ export async function sayTest() {
     return result
 }
 
-export default defineTRPCQuery(sayTest)
+export default defineTRPCProcedure((p) => p
+    .input(() => {})
+    .mutation(() => sayTest as unknown as string),
+)

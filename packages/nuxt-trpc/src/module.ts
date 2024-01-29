@@ -1,5 +1,6 @@
 import { addImports, addPluginTemplate, addServerHandler, addServerImports, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import fg from 'fast-glob'
+import pMap from 'p-map'
 import { addTransformerPlugin } from './runtime/add-transformer-plugin'
 import { DefaultModuleOptions, type ModuleOptions, type Options } from './runtime/options'
 import { parseProcedurePath } from './runtime/parse-procedure-path'
@@ -38,7 +39,7 @@ export default defineNuxtModule<PartialDeep<ModuleOptions>>({
         await scanTRPCFiles()
 
         // Get Procedures
-        const procedures = files.map((file) => parseProcedurePath(file, options))
+        const procedures = await pMap(files, async (file) => await parseProcedurePath(file, options))
 
         // Write template files
         addTemplate({

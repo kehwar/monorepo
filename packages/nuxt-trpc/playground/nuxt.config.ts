@@ -5,9 +5,4 @@ export default defineNuxtConfig({
     },
     devtools: { enabled: true },
     experimental: { asyncContext: true },
-    trpc: {
-        remoteFunctions: {
-            default: 'query',
-        },
-    },
 })
