@@ -191,7 +191,7 @@ function _stylisticConfig(options: OptionsConfig) {
                         allowObjectStart: true,
                         allowTypeStart: true,
                         applyDefaultIgnorePatterns: true,
-                        ignorePattern: '^\\s*@.*$',
+                        ignorePattern: '^\\s*[@^].*$',
                     },
                 ],
                 'style/quotes': ['error', quotes, { allowTemplateLiterals: true, avoidEscape: true } ],
