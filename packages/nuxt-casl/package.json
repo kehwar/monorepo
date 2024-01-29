@@ -40,7 +40,7 @@
         "pathe": "^1.1.1"
     },
     "devDependencies": {
-        "@antfu/eslint-config": "^2.4.5",
+        "@kehwar/eslint-config": "workspace:^",
         "@nuxt/devtools": "latest",
         "@nuxt/eslint-config": "^0.2.0",
         "@nuxt/module-builder": "^0.5.4",

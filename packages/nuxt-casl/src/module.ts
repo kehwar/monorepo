@@ -1,6 +1,5 @@
 import { addImports, addServerImports, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import fg from 'fast-glob'
-import _ from 'lodash'
 import { DefaultModuleOptions, type Options } from './runtime/options'
 import { parsePath } from './runtime/parse-path'
 import { getAbilityTemplate } from './templates/get-ability-template'
