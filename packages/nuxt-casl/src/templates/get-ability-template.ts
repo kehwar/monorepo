@@ -8,6 +8,7 @@ export function getAbilityTemplate(paths: ParsedPath[]) {
         import type { LiteralUnion, OmitIndexSignature, Paths } from 'type-fest'
         import _ from 'lodash'
         import { guard } from '@ucast/mongo2js'
+        import { jsonc } from 'jsonc'
 
         ${paths.map(({ importPath, importName }) => `import type ${importName} from '${importPath}'`).join('\n        ')}
 
@@ -29,7 +30,7 @@ export function getAbilityTemplate(paths: ParsedPath[]) {
             // Compile rules with lodash template and parse with JSON
             const rules = rawRules.flatMap(rule => {
                 if (typeof rule === 'string')
-                    return JSON.parse(_.template(rule)(meta)) as RawRule[]
+                    return jsonc.parse(_.template(rule)(meta)) as RawRule[]
                 return rule
             })
 
